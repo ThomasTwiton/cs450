@@ -103,19 +103,19 @@ def main():
     if args.beans == None:
         beans = 1000
     else:
-        beans = args.beans
+        beans = int(args.beans)
     if args.bins == None:
         bins = 11
     else:
-        bins = args.bins
+        bins = int(args.bins)
     if args.start == None:
-        start = 5
+        start = bins//2
     else:
-        start = args.start
+        start = int(args.start)
     if args.prob == None:
         prob = 0.5
     else:
-        prob = args.prob
+        prob = float(args.prob)
 
     print("Start")
     # Create a list of jobs
