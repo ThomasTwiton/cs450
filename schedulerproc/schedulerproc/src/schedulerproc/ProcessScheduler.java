@@ -45,7 +45,7 @@ public class ProcessScheduler {
         double sum = 0.0;
         for(int i = 0; i < num_processes; i++){
             sum += wait_time;
-            System.out.print(sum + "\n");
+            //System.out.print(sum + "\n");
             wait_time += this.readyQueue.get(i).getNextBurst();
         }
         return sum / num_processes; 
@@ -77,7 +77,7 @@ public class ProcessScheduler {
         for(int i = 0; i < num_processes; i++){
             sum += wait_time;
             wait_time += this.readyQueue.get(i).getNextBurst();
-            System.out.print(sum + "\n");
+            //System.out.print(sum + "\n");
         }
         return sum / num_processes;
     }
@@ -108,7 +108,7 @@ public class ProcessScheduler {
         for(int i = 0; i < num_processes; i++){
             sum += wait_time;
             wait_time += this.readyQueue.get(i).getNextBurst();
-            System.out.print(sum + "\n");
+            //System.out.print(sum + "\n");
         }
         return sum / num_processes;
     }
@@ -130,17 +130,20 @@ public class ProcessScheduler {
                        
             SimpleProcess next = this.readyQueue.get(i);
             i++;
-            if (next.getTimeLeft() > this.rrQuantum && num_processes-1>i){
+            
+            if (next.getTimeLeft() > this.rrQuantum){
                 next.reduceTimeLeft(this.rrQuantum);
+                next.preempt();
+                
                 this.readyQueue.add(next);
                 num_processes += 1;
                 
                 wait_time += this.rrQuantum;
             } else {
-                sum += wait_time;
+                sum += wait_time - (this.rrQuantum * next.getPreemptedRuns());
                 wait_time += next.getTimeLeft();
             }           
-            System.out.print(sum + "\n");
+            //System.out.print(sum + "\n");
             
         }
         return sum / original_num_processes; 

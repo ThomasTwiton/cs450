@@ -17,12 +17,15 @@ public class SimpleProcess {
     
     //keep track how much more time a process needs if it gets preempted. 
     private int timeLeft;
+    //keep track of number of times a process got to run without completing
+    private int preemptedRuns;
 
     public SimpleProcess(int nextBurst, int priority, int arrivalTime) {
         this.nextBurst = nextBurst;
         this.priority = priority;
         this.arrivalTime = arrivalTime;
         this.timeLeft = nextBurst;
+        this.preemptedRuns = 0;
     }
 
     public int getNextBurst() {
@@ -43,6 +46,14 @@ public class SimpleProcess {
 
     public int getArrivalTime() {
         return this.arrivalTime;
+    }
+    
+    public void preempt() {
+        this.preemptedRuns += 1;
+    }
+    
+    public int getPreemptedRuns() {
+        return this.preemptedRuns;
     }
     
 }
