@@ -63,8 +63,8 @@ public class MemorySchedulerTest {
         instance3.useFIFO(referenceString);
         instance4.useFIFO(referenceString);
 
-        int hw10q3 = 0;  // replace with the answer to the question 3 of the the homework 10
-        int hw10q4 = 0;  // replace with the answer to the question 4 of the the homework 10
+        int hw10q3 = 15;  // replace with the answer to the question 3 of the the homework 10
+        int hw10q4 = 12;  // replace with the answer to the question 4 of the the homework 10
 
         assertEquals(hw10q3, instance3.getPageFaultCount());
         assertEquals(hw10q4, instance4.getPageFaultCount());
@@ -96,8 +96,8 @@ public class MemorySchedulerTest {
         instance3.useFIFO(referenceString);
         instance4.useFIFO(referenceString);
 
-        int hw10q53 = 0;  // replace with the answer to the question 5 (3 frames) of the the homework 10
-        int hw10q54 = 0;  // replace with the answer to the question 5 (4 frames) of the the homework 10
+        int hw10q53 = 14;  // replace with the answer to the question 5 (3 frames) of the the homework 10
+        int hw10q54 = 15;  // replace with the answer to the question 5 (4 frames) of the the homework 10
 
         assertEquals(hw10q53, instance3.getPageFaultCount());
         assertEquals(hw10q54, instance4.getPageFaultCount());
@@ -129,8 +129,8 @@ public class MemorySchedulerTest {
         instance3.useOPT(referenceString);
         instance4.useOPT(referenceString);
 
-        int hw10q6 = 0;  // replace with the answer to the question 6 of the the homework 10
-        int hw10q7 = 0;  // replace with the answer to the question 7 of the the homework 10
+        int hw10q6 = 11;  // replace with the answer to the question 6 of the the homework 10
+        int hw10q7 = 10;  // replace with the answer to the question 7 of the the homework 10
 
         assertEquals(hw10q6, instance3.getPageFaultCount());
         assertEquals(hw10q7, instance4.getPageFaultCount());
@@ -162,8 +162,8 @@ public class MemorySchedulerTest {
         instance3.useLRU(referenceString);
         instance4.useLRU(referenceString);
 
-        int hw10q8 = 0;  // replace with the answer to the question 8 of the the homework 10
-        int hw10q9 = 0;  // replace with the answer to the question 9 of the the homework 10
+        int hw10q8 = 13;  // replace with the answer to the question 8 of the the homework 10
+        int hw10q9 = 12;  // replace with the answer to the question 9 of the the homework 10
 
         assertEquals(hw10q8, instance3.getPageFaultCount());
         assertEquals(hw10q9, instance4.getPageFaultCount());
