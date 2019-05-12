@@ -74,6 +74,7 @@ public class DiskScheduler {
         for(int i = 0; i<rStrings.length; i++){
             requests.add(Integer.parseInt(rStrings[i]));
         }   
+        Collections.sort(requests);
         
         int direction = 0;
         if(this.currentCylinder - this.previousCylinder > 0 ){
@@ -87,25 +88,24 @@ public class DiskScheduler {
 
         while(requests.size() > 0){
             //if going right, check if we need to keep going right
-            Collections.sort(requests);
             if(direction==1){
                 if(this.currentCylinder > (requests.get(requests.size() -1)) || this.currentCylinder == this.cylinders){
                     direction = -1;
-                    System.out.println("Turning around");
+                    //System.out.println("Turning around");
                 }
             } //if going left, check if need to keep going left 
             else {
                 if(this.currentCylinder < (requests.get(0)) || this.currentCylinder == 0){
                     direction = +1;
-                    System.out.println("Turning around");
+                    //System.out.println("Turning around");
                 }
             }
             
             this.currentCylinder = this.currentCylinder + direction;
-            System.out.println(this.currentCylinder);
-            System.out.println(requests);
+            //System.out.println(this.currentCylinder);
+            //System.out.println(requests);
             if(requests.contains(this.currentCylinder)){
-                System.out.println("Found one");
+                //System.out.println("Found one");
                 this.totalMoves += Math.abs(this.currentCylinder - this.previousCylinder);
                 this.previousCylinder = this.currentCylinder;
                 int index = requests.indexOf(this.currentCylinder);
@@ -121,6 +121,29 @@ public class DiskScheduler {
         for(int i = 0; i<rStrings.length; i++){
             requests.add(Integer.parseInt(rStrings[i]));
         }   
+        Collections.sort(requests);
+
+        while(requests.size() > 0){
+            //if going right, check if we need to keep going right
+            
+            
+            if(this.currentCylinder > (requests.get(requests.size() -1)) || this.currentCylinder == this.cylinders){
+                this.totalMoves += 1; //this.currentCylinder;
+                this.currentCylinder = 0;
+                //System.out.println("Jumping back");
+            }
+            
+            this.currentCylinder += 1;
+            //System.out.println(this.currentCylinder);
+            //System.out.println(requests);
+            if(requests.contains(this.currentCylinder)){
+                //System.out.println("Found one");
+                this.totalMoves += Math.abs(this.currentCylinder - this.previousCylinder);
+                this.previousCylinder = this.currentCylinder;
+                int index = requests.indexOf(this.currentCylinder);
+                requests.remove(index);
+            }
+        }
     }
 
 }
