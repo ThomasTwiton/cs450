@@ -46,9 +46,7 @@ public class DiskScheduler {
 
         for(int i = 0; i<rStrings.length; i++){
             requests.add(Integer.parseInt(rStrings[i]));
-        }   
-
-        
+        }           
         
         for(int i = 0; i<rStrings.length; i++){
             int closest = this.cylinders + 1;
@@ -122,13 +120,12 @@ public class DiskScheduler {
             requests.add(Integer.parseInt(rStrings[i]));
         }   
         Collections.sort(requests);
+        this.previousCylinder = this.currentCylinder;
 
         while(requests.size() > 0){
-            //if going right, check if we need to keep going right
-            
+            //Look to see if there are still more requests in the direction we are headed         
             
             if(this.currentCylinder > (requests.get(requests.size() -1)) || this.currentCylinder == this.cylinders){
-                this.totalMoves += 1; //this.currentCylinder;
                 this.currentCylinder = 0;
                 //System.out.println("Jumping back");
             }
